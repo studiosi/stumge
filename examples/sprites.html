@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../src/stumge.js"></script>
+  <title>STUMGE Showcase</title>
+</head>
+<body>
+
+<canvas id="stumge"></canvas>
+
+<script>
+
+    mario_sprite = new stumge_sprite([
+      [-1, -1, -1,  0,  0,  0, -1, -1, -1, -1],
+      [-1, -1,  0,  0,  0,  0,  0,  0,  0, -1],
+      [-1,  0,  0,  0,  2,  2,  2,  0, -1, -1],
+      [ 0,  0,  2,  0,  0,  2,  2,  2,  2, -1],
+      [ 0,  0,  2,  2,  2,  2,  0,  0,  2, -1],
+      [-1, -1,  2,  2,  2,  2,  2,  2, -1, -1],
+      [-1,  0,  0,  1,  0,  0,  1, -1, -1, -1],
+      [ 0,  0,  0,  1,  0,  0,  1,  0,  0, -1],
+      [ 2,  2,  0,  3,  1,  1,  3,  0,  0,  2],
+      [ 2,  2,  1,  1,  1,  1,  1,  1,  2,  2],
+      [-1, -1,  0,  0, -1, -1,  0,  0, -1, -1],
+      [-1,  0,  0,  0, -1, -1,  0,  0,  0, -1],
+    ]);
+
+    cage_sprite = new stumge_sprite([
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, -1, -1, -1, -1,  -1,  -1,  -1, -1, -1, -1, -1, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+    ]);
+
+
+    sprite_2 = mario_sprite.getCopy();
+    sprite_3 = mario_sprite.getCopy();
+    sprite_moving = mario_sprite.getCopy();
+
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    let e = new stumge();
+    e.init(update, {
+      'scale': 2
+    });
+
+    let rotation = 0;
+
+    mario_sprite.x = 10;
+    mario_sprite.y = 70;
+    sprite_2.x = 30;
+    sprite_2.y = 70;
+    sprite_3.x = 50;
+    sprite_3.y = 70;
+    cage_sprite.x = 60;
+    cage_sprite.y = 115;
+    sprite_moving.x = 0;
+    sprite_moving.y = 117;
+
+    let collision = false;
+
+    function update() {
+      e.floodScreen(3);
+      e.putText("abcdefghijklm", 10, 10);
+      e.putText("nopqrstuvwxyz", 10, 20);
+      e.putText("0123456789", 10, 30);
+      e.putText(".,;:'!\"?", 10, 40);
+      if(e.frame_count % 20 === 0) {
+        mario_sprite.rotate(rotation);
+        sprite_2.horizontalFlip();
+        sprite_3.verticalFlip();
+        rotation = (rotation + 1) % 4;
+      }
+      e.putText('Sprite Manipulation', 10, 60)
+      e.setSprite(mario_sprite);
+      e.setSprite(sprite_2);
+      e.setSprite(sprite_3);
+      e.putText('Collision detection', 10, 90)
+      collision = sprite_moving.collidesWith(cage_sprite);
+      if(!collision) {
+        e.putText('Collision: NO', 10, 100)
+      }
+      else {
+        e.putText('Collision: YES', 10, 100)
+      }
+      e.setSprite(cage_sprite);
+      e.setSprite(sprite_moving);
+      sprite_moving.x += 1;
+      if(sprite_moving.x > stumge_width) {
+        sprite_moving.x = 0;
+      }
+    }
+
+</script>
+
+</body>
+</html>

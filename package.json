@@ -1,0 +1,26 @@
+{
+  "name": "stumge",
+  "version": "0.0.1",
+  "description": "A 2D game microengine focused on bringing an old school development experience to the web",
+  "main": "src/stumge.js",
+  "scripts": {
+    "js-build": "gulp"
+  },
+  "keywords": [
+    "game",
+    "development",
+    "engine",
+    "html",
+    "canvas",
+    "2d"
+  ],
+  "author": "David Gil de Gómez Pérez (Studiosi)",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-html-minifier-terser": "^6.0.0",
+    "gulp-jsdoc3": "^3.0.0",
+    "gulp-minify": "^3.1.0"
+  },
+  "dependencies": {}
+}
