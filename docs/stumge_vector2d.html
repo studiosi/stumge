@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>STUMGE Class: stumge_sprite</title>
+	<title>STUMGE Class: stumge_vector2d</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,16 +72,16 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: stumge_sprite</h1>
+	<h1 class="page-title">Class: stumge_vector2d</h1>
 <section>
 
 <header>
     
         <h2>
-        stumge_sprite
+        stumge_vector2d
         </h2>
         
-            <div class="class-description">Represents a sprite</div>
+            <div class="class-description">Represents a 2D vector</div>
         
     
 </header>
@@ -93,12 +93,16 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="stumge_sprite"><span class="type-signature"></span>new stumge_sprite(data, x, y)</h4>
+    <h4 class="name" id="stumge_vector2d"><span class="type-signature"></span>new stumge_vector2d(x, y)</h4>
     
     
 </dt>
 <dd>
 
+    
+    <div class="description">
+        Creates an integer vector
+    </div>
     
 
     
@@ -122,8 +126,6 @@
         
 
         
-        <th>Default</th>
-        
 
         <th class="last">Description</th>
     </tr>
@@ -134,41 +136,13 @@
 
         <tr>
             
-                <td class="name"><code>data</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;int>></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">bidimensional array of color indexes</td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>x</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">int</span>
+<span class="param-type">number</span>
 
 
 
@@ -178,14 +152,8 @@
             
 
             
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
 
-            <td class="description last">x-position</td>
+            <td class="description last">x-coordinate</td>
         </tr>
 
     
@@ -198,7 +166,7 @@
             <td class="type">
             
                 
-<span class="param-type">int</span>
+<span class="param-type">number</span>
 
 
 
@@ -208,14 +176,8 @@
             
 
             
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
 
-            <td class="description last">y-position</td>
+            <td class="description last">y-coordinate</td>
         </tr>
 
     
@@ -293,223 +255,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        <dl>
-            
-<hr>
-<dt class="name" id="data">
-    <h4 id="data"><span class="type-signature"></span>data<span class="type-signature"> :Array.&lt;Array.&lt;int>></span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Bidimensional array of color indexes that represent the sprite
-    </div>
-    
-
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">Array.&lt;Array.&lt;int>></span>
-
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt class="name" id="x">
-    <h4 id="x"><span class="type-signature"></span>x<span class="type-signature"> :int</span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        x-position
-    </div>
-    
-
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">int</span>
-
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt class="name" id="y">
-    <h4 id="y"><span class="type-signature"></span>y<span class="type-signature"> :int</span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        y-position
-    </div>
-    
-
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
-<span class="param-type">int</span>
-
-
-
-            </li>
-        </ul>
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-</dd>
-
-        </dl>
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -518,7 +263,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="collidesWith"><span class="type-signature"></span>collidesWith(other)</h4>
+    <h4 class="name" id="add"><span class="type-signature"></span>add(other)</h4>
     
     
 </dt>
@@ -526,7 +271,7 @@
 
     
     <div class="description">
-        Checks if the sprite collides with another sprite
+        Returns the sum of the current vector with another one
     </div>
     
 
@@ -567,7 +312,7 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="stumge_sprite.html">stumge_sprite</a></span>
+<span class="param-type"><a href="stumge_vector2d.html">stumge_vector2d</a></span>
 
 
 
@@ -578,7 +323,7 @@
 
             
 
-            <td class="description last">sprite with which collision is to be checked</td>
+            <td class="description last">the vector to add</td>
         </tr>
 
     
@@ -642,7 +387,7 @@
     
             
 <div class="param-desc">
-    true if there is collision, falseotherwise
+    the sum vector
 </div>
 
 
@@ -653,7 +398,7 @@
     </dt>
     <dd>
         
-<span class="param-type">boolean</span>
+<span class="param-type"><a href="stumge_vector2d.html">stumge_vector2d</a></span>
 
 
 
@@ -670,7 +415,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="getCopy"><span class="type-signature"></span>getCopy()</h4>
+    <h4 class="name" id="cross_mul"><span class="type-signature"></span>cross_mul(other)</h4>
     
     
 </dt>
@@ -678,387 +423,7 @@
 
     
     <div class="description">
-        Creates a copy of the sprite.
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="stumge_sprite.html">stumge_sprite</a></span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="getHeight"><span class="type-signature"></span>getHeight()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Gets the height of the sprite
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    height of the sprite
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="getWidth"><span class="type-signature"></span>getWidth()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Gets the width of the sprite
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    width of the sprite
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="horizontalFlip"><span class="type-signature"></span>horizontalFlip()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Flips the sprite horizontally
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="rotate"><span class="type-signature"></span>rotate(position)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        Rotates the sprite
+        Returns the cross multiplication of the current vector and anotherone.
     </div>
     
 
@@ -1083,8 +448,6 @@
         
 
         
-        <th>Default</th>
-        
 
         <th class="last">Description</th>
     </tr>
@@ -1095,13 +458,13 @@
 
         <tr>
             
-                <td class="name"><code>position</code></td>
+                <td class="name"><code>other</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">int</span>
+<span class="param-type"><a href="stumge_vector2d.html">stumge_vector2d</a></span>
 
 
 
@@ -1111,14 +474,8 @@
             
 
             
-                <td class="default">
-                
-                    0
-                
-                </td>
-            
 
-            <td class="description last">0 for no rotation, 1 for 90 degrees,2 for 180 degrees and 3 for 270 degrees</td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -1186,7 +543,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="verticalFlip"><span class="type-signature"></span>verticalFlip()</h4>
+    <h4 class="name" id="dot_mul"><span class="type-signature"></span>dot_mul(other)</h4>
     
     
 </dt>
@@ -1194,7 +551,7 @@
 
     
     <div class="description">
-        Flips the sprite vertically
+        Returns the dot product of the current vector and another one
     </div>
     
 
@@ -1203,6 +560,384 @@
     
 
     
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>other</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="stumge_vector2d.html">stumge_vector2d</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="magnitude"><span class="type-signature"></span>magnitude()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returs the magnitude of the vector
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="normalize"><span class="type-signature"></span>normalize()</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returns a new vector which is the current one, normalized.
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    the new normalized vector
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="stumge_vector2d.html">stumge_vector2d</a></span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="scalar_mul"><span class="type-signature"></span>scalar_mul(n)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Returns the current vector multiplied by an scalar
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>n</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the scalar multiplier</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
     
 
     

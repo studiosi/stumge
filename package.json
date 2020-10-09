@@ -4,7 +4,8 @@
   "description": "A 2D game microengine focused on bringing an old school development experience to the web",
   "main": "src/stumge.js",
   "scripts": {
-    "js-build": "gulp"
+    "js-build": "mocha && gulp",
+    "test": "mocha"
   },
   "keywords": [
     "game",
@@ -22,5 +23,8 @@
     "gulp-jsdoc3": "^3.0.0",
     "gulp-minify": "^3.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "almost-equal": "^1.1.0",
+    "mocha": "^8.1.3"
+  }
 }
