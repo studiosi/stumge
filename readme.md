@@ -9,6 +9,7 @@ and in keeping the size of both the library and the games small.
 * Efficient handling of the canvas with regular 60 FPS animation
 * On-screen font
 * On-screen palette
+* 2D vectors
 
 ## TODOs
 A tutorial is on the making. So far, there is JSDoc documentation and a couple of examples on the examples folder. There 
