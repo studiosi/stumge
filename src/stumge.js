@@ -1,26 +1,5 @@
 /*jshint esversion: 6 */
-
-/** Identifies the key "UP" */
-const stumge_key_up = 0;
-/** Identifies the key "DOWN" */
-const stumge_key_down = 1;
-/** Identifies the key "LEFT" */
-const stumge_key_left = 2;
-/** Identifies the key "RIGHT" */
-const stumge_key_right = 3;
-/** Identifies the key "BUTTON 1" */
-const stumge_key_button_1 = 4;
-/** Identifies the key "BUTTON 2" */
-const stumge_key_button_2 = 5;
-/** Identifies the key "SELECT" */
-const stumge_key_select = 6;
-/** Identifies the key "START" */
-const stumge_key_start = 7;
-
-/** Represents the width of the screen (160 like the GameBoy) */
-const stumge_width = 160;
-/** Represents the height of the screen (144 like the GameBoy) */
-const stumge_height = 144;
+"use strict";
 
 /**
  * Represents a sprite
@@ -173,13 +152,37 @@ class stumge {
    * @constructor
    */
   constructor() {
+
+    // Constants
+    /** Identifies the key "UP" */
+    this.stumge_key_up = 0;
+    /** Identifies the key "DOWN" */
+    this.stumge_key_down = 1;
+    /** Identifies the key "LEFT" */
+    this.stumge_key_left = 2;
+    /** Identifies the key "RIGHT" */
+    this.stumge_key_right = 3;
+    /** Identifies the key "BUTTON 1" */
+    this.stumge_key_button_1 = 4;
+    /** Identifies the key "BUTTON 2" */
+    this.stumge_key_button_2 = 5;
+    /** Identifies the key "SELECT" */
+    this.stumge_key_select = 6;
+    /** Identifies the key "START" */
+    this.stumge_key_start = 7;
+
+    /** Represents the width of the screen (160 like the GameBoy) */
+    this.stumge_width = 160;
+    /** Represents the height of the screen (144 like the GameBoy) */
+    this.stumge_height = 144;
+
     document.addEventListener('keydown', this.keyDown.bind(this), false);
     document.addEventListener('keyup', this.keyUp.bind(this), false);
     this.keyboard_state = [
       0, 0, 0, 0,
       0, 0, 0, 0,
     ];
-    this.screen = new Array(stumge_width * stumge_height).fill(3);
+    this.screen = new Array(this.stumge_width * this.stumge_height).fill(3);
     this.engine_canvas = null;
     this.engine_shadow_canvas = null;
     this.engine_context = null;
@@ -608,7 +611,7 @@ class stumge {
       for(let dy = 0; dy < sprite.data.length; dy++) {
         for(let dx = 0; dx < sprite.data[dy].length; dx++) {
           let pixel = sprite.data[dy][dx];
-          if(pixel !== -1 && (sprite.x + dx) < stumge_width && (sprite.y + dy) < stumge_height) {
+          if(pixel !== -1 && (sprite.x + dx) < this.stumge_width && (sprite.y + dy) < this.stumge_height) {
             this.setPixel(sprite.x + dx, sprite.y + dy, pixel);
           }
         }
@@ -623,7 +626,7 @@ class stumge {
    * @param color_idx {int} color index of the color to paint
    */
   setPixel(x, y, color_idx) {
-    let screen_idx = (stumge_width * y) + x;
+    let screen_idx = (this.stumge_width * y) + x;
     this.screen[screen_idx] = color_idx;
   }
 
@@ -631,10 +634,10 @@ class stumge {
    * Repaints the screen
    */
   repaint() {
-    let image_data = this.engine_shadow_context.createImageData(stumge_width, stumge_height);
-    for(let dx = 0; dx < stumge_width; dx++) {
-      for(let dy = 0; dy < stumge_height; dy++) {
-        let screen_idx = (stumge_width * dy) + dx;
+    let image_data = this.engine_shadow_context.createImageData(this.stumge_width, this.stumge_height);
+    for(let dx = 0; dx < this.stumge_width; dx++) {
+      for(let dy = 0; dy < this.stumge_height; dy++) {
+        let screen_idx = (this.stumge_width * dy) + dx;
         let data_idx = 4 * screen_idx;
         let color = this.palette[this.screen[screen_idx]];
         image_data.data[data_idx] = color.r;
@@ -644,7 +647,7 @@ class stumge {
       }
     }
     this.engine_shadow_context.putImageData(image_data, 0, 0);
-    this.engine_context.drawImage(this.engine_shadow_canvas, 0, 0, stumge_width * this.scale, stumge_height * this.scale);
+    this.engine_context.drawImage(this.engine_shadow_canvas, 0, 0, this.stumge_width * this.scale, this.stumge_height * this.scale);
   }
 
   /**
@@ -674,12 +677,12 @@ class stumge {
     }
     this.engine_canvas = document.querySelector("canvas#stumge");
     this.engine_context = this.engine_canvas.getContext("2d", { alpha: false });
-    this.engine_context.canvas.width = stumge_width * this.scale;
-    this.engine_context.canvas.height = stumge_height * this.scale;
+    this.engine_context.canvas.width = this.stumge_width * this.scale;
+    this.engine_context.canvas.height = this.stumge_height * this.scale;
     this.engine_context.imageSmoothingEnabled = false;
     this.engine_shadow_canvas = document.createElement("canvas");
-    this.engine_shadow_canvas.width = stumge_width;
-    this.engine_shadow_canvas.height = stumge_height;
+    this.engine_shadow_canvas.width = this.stumge_width;
+    this.engine_shadow_canvas.height = this.stumge_height;
     this.engine_shadow_context = this.engine_shadow_canvas.getContext("2d");
     this.update_function = updfunc;
     requestAnimationFrame(this.frame.bind(this));
@@ -695,33 +698,33 @@ class stumge {
         break;
       case 'ArrowUp':
       case 'Up':
-        this.changeKeyState(stumge_key_up);
+        this.changeKeyState(this.stumge_key_up);
         break;
       case 'ArrowDown':
       case 'Down':
-        this.changeKeyState(stumge_key_down);
+        this.changeKeyState(this.stumge_key_down);
         break;
       case 'ArrowLeft':
       case 'Left':
-        this.changeKeyState(stumge_key_left);
+        this.changeKeyState(this.stumge_key_left);
         break;
       case 'ArrowRight':
       case 'Right':
-        this.changeKeyState(stumge_key_right);
+        this.changeKeyState(this.stumge_key_right);
         break;
       case 'a':
       case 'A':
-        this.changeKeyState(stumge_key_button_1);
+        this.changeKeyState(this.stumge_key_button_1);
         break;
       case 's':
       case 'S':
-        this.changeKeyState(stumge_key_button_2);
+        this.changeKeyState(this.stumge_key_button_2);
         break;
       case 'Control':
-        this.changeKeyState(stumge_key_start);
+        this.changeKeyState(this.stumge_key_start);
         break;
       case 'Alt':
-        this.changeKeyState(stumge_key_select);
+        this.changeKeyState(this.stumge_key_select);
         break;
     }
     event.preventDefault();
@@ -733,33 +736,33 @@ class stumge {
         break;
       case 'ArrowUp':
       case 'Up':
-        this.keyboard_state[stumge_key_up] = 0;
+        this.keyboard_state[this.stumge_key_up] = 0;
         break;
       case 'ArrowDown':
       case 'Down':
-        this.keyboard_state[stumge_key_down] = 0;
+        this.keyboard_state[this.stumge_key_down] = 0;
         break;
       case 'ArrowLeft':
       case 'Left':
-        this.keyboard_state[stumge_key_left] = 0;
+        this.keyboard_state[this.stumge_key_left] = 0;
         break;
       case 'ArrowRight':
       case 'Right':
-        this.keyboard_state[stumge_key_right] = 0;
+        this.keyboard_state[this.stumge_key_right] = 0;
         break;
       case 'a':
       case 'A':
-        this.keyboard_state[stumge_key_button_1] = 0;
+        this.keyboard_state[this.stumge_key_button_1] = 0;
         break;
       case 's':
       case 'S':
-        this.keyboard_state[stumge_key_button_2] = 0;
+        this.keyboard_state[this.stumge_key_button_2] = 0;
         break;
       case 'Control':
-        this.keyboard_state[stumge_key_start] = 0;
+        this.keyboard_state[this.stumge_key_start] = 0;
         break;
       case 'Alt':
-        this.keyboard_state[stumge_key_select] = 0;
+        this.keyboard_state[this.stumge_key_select] = 0;
         break;
     }
     event.preventDefault();
@@ -846,11 +849,4 @@ class stumge_vector2d {
     return (this.x * other.y) - (this.y * other.x)
   }
 
-
-}
-
-exports._test = {
-  stumge_sprite: stumge_sprite,
-  stumge: stumge,
-  stumge_vector2d: stumge_vector2d,
 }
