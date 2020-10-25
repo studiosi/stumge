@@ -2,7 +2,7 @@ const assert = require('assert')
 const almostEqual = require('almost-equal')
 const rewire = require('rewire')
 
-const stumge = rewire('../src/stumge.js')
+const stumge = rewire('../src/stumge_vector2d.js')
 const stumge_vector2d = stumge.__get__('stumge_vector2d')
 
 describe('stumge_vector2d', function() {
